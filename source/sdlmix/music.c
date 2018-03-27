@@ -20,9 +20,9 @@
 */
 #include <string.h> /* for strtok() and strtok_s() */
 
-#include "SDL_hints.h"
-#include "SDL_log.h"
-#include "SDL_timer.h"
+#include "../sdl/SDL_hints.h"
+#include "../sdl/SDL_log.h"
+#include "../sdl/SDL_timer.h"
 
 #include "SDL_mixer.h"
 #include "mixer.h"

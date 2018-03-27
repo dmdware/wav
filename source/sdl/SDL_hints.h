@@ -47,6 +47,18 @@
 extern "C" {
 #endif
 
+#define MUSIC_WAV
+#define MUSIC_FLAC
+#define MUSIC_OGG
+#define MUSIC_MP3_MPG123
+#define MUSIC_MP3_MAD
+#define MUSIC_MP3_SMPEG
+#define MUSIC_MOD_MODPLUG
+#define MUSIC_MOD_MIKMOD
+#define MUSIC_MID_FLUIDSYNTH
+#define MUSIC_MID_TIMIDITY
+#define MUSIC_MID_NATIVE
+
 /**
  *  \brief  A variable controlling how 3D acceleration is used to accelerate the SDL screen surface.
  *

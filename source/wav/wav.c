@@ -10,7 +10,6 @@ void dowav()
 
 void tone()
 {
-#if 0
 	// start SDL with audio support
 	if (SDL_Init(SDL_INIT_AUDIO) == -1) {
 		char msg[1280];
@@ -29,6 +28,7 @@ void tone()
 		//exit(2);
 	}
 
+#if 0
 	Mix_AllocateChannels(SOUND_CHANNELS);
 
 	//chunks.assign(channelnum, (Mix_Chunk*)0);

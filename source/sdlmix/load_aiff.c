@@ -28,7 +28,7 @@
   in december 2002.
 */
 
-#include "SDL_endian.h"
+#include "../sdl/SDL_endian.h"
 #include "SDL_mixer.h"
 #include "load_aiff.h"
 
