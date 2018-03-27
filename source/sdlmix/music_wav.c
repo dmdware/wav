@@ -19,6 +19,8 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+#define MUSIC_WAV
+
 #ifdef MUSIC_WAV
 
 /* This file supports streaming WAV files */

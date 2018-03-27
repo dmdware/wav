@@ -166,6 +166,7 @@
     <ClInclude Include="..\..\..\source\sdlmix\music_smpeg.h" />
     <ClInclude Include="..\..\..\source\sdlmix\music_timidity.h" />
     <ClInclude Include="..\..\..\source\sdlmix\music_wav.h" />
+    <ClInclude Include="..\..\..\source\sdlmix\SDL_mixer.h" />
     <ClInclude Include="..\..\..\source\sdl\audio\directsound\SDL_directsound.h" />
     <ClInclude Include="..\..\..\source\sdl\audio\disk\SDL_diskaudio.h" />
     <ClInclude Include="..\..\..\source\sdl\audio\dummy\SDL_dummyaudio.h" />
@@ -201,7 +202,6 @@
     <ClInclude Include="..\..\..\source\sdl\include\SDL.h" />
     <ClInclude Include="..\..\..\source\sdl\include\SDL_assert.h" />
     <ClInclude Include="..\..\..\source\sdl\include\SDL_atomic.h" />
-    <ClInclude Include="..\..\..\source\sdl\include\SDL_audio.h" />
     <ClInclude Include="..\..\..\source\sdl\include\SDL_bits.h" />
     <ClInclude Include="..\..\..\source\sdl\include\SDL_blendmode.h" />
     <ClInclude Include="..\..\..\source\sdl\include\SDL_clipboard.h" />
