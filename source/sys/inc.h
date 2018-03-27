@@ -182,6 +182,7 @@
 //#include <SDL_mixer.h>
 //#include <SDL_ttf.h>
 #include "../sdl/SDL_syswm.h"
+#include "../sdlmix/SDL_mixer.h"
 #endif
 //#include <SDL_net.h>
 #endif
