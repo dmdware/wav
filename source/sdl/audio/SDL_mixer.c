@@ -1,6 +1,6 @@
 /*
   Simple DirectMedia Layer
-  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,9 +22,9 @@
 
 /* This provides the default mixing callback for the SDL audio routines */
 
-#include "../SDL_cpuinfo.h"
-#include "../SDL_timer.h"
-#include "../SDL_audio.h"
+#include "SDL_cpuinfo.h"
+#include "SDL_timer.h"
+#include "SDL_audio.h"
 #include "SDL_sysaudio.h"
 
 /* This table is used to add two sound values together and pin
