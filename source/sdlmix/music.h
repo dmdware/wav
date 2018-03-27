@@ -118,6 +118,19 @@ extern void unload_music(void);
 extern char *music_cmd;
 extern SDL_AudioSpec music_spec;
 
+
+#define MUSIC_WAV
+//#define MUSIC_FLAC
+//#define MUSIC_OGG
+//#define MUSIC_MP3_MPG123
+//#define MUSIC_MP3_MAD
+//#define MUSIC_MP3_SMPEG
+//#define MUSIC_MOD_MODPLUG
+//#define MUSIC_MOD_MIKMOD
+//#define MUSIC_MID_FLUIDSYNTH
+//#define MUSIC_MID_TIMIDITY
+//#define MUSIC_MID_NATIVE
+
 #endif /* MUSIC_H_ */
 
 /* vi: set ts=4 sw=4 expandtab: */

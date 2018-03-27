@@ -471,6 +471,7 @@
     <ClCompile Include="..\..\..\source\sdlmix\effect_stereoreverse.c" />
     <ClCompile Include="..\..\..\source\sdlmix\load_aiff.c" />
     <ClCompile Include="..\..\..\source\sdlmix\load_voc.c" />
+    <ClCompile Include="..\..\..\source\sdlmix\mixer.c" />
     <ClCompile Include="..\..\..\source\sdlmix\music.c" />
     <ClCompile Include="..\..\..\source\sdlmix\music_cmd.c" />
     <ClCompile Include="..\..\..\source\sdlmix\music_flac.c" />
