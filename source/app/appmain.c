@@ -448,6 +448,8 @@ void appinit()
 	}
 #endif
 
+	dowav();
+
 #if 0
 	link_version=(SDL_version*)Mix_Linked_Version();
 	SDL_MIXER_VERSION(&compile_version);
@@ -770,6 +772,7 @@ void evloop()
 			CHECKGL();
 			SDL_GL_SwapWindow(g_win);
 			CHECKGL();
+			tone();
 
 			CHECKGL();
 		}
@@ -813,7 +816,6 @@ extern "C" void __cdecl SteamAPIDebugTextHook( int nSeverity, const char *pchDeb
 
 void appmain()
 {
-	dowav();
 
 
 	//*((int*)0) = 0;
