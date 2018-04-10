@@ -165,8 +165,8 @@
     <ClInclude Include="..\..\..\source\sdlmix\music_ogg.h" />
     <ClInclude Include="..\..\..\source\sdlmix\music_smpeg.h" />
     <ClInclude Include="..\..\..\source\sdlmix\music_timidity.h" />
-    <ClInclude Include="..\..\..\source\sdlmix\music_wav.h" />
     <ClInclude Include="..\..\..\source\sdlmix\SDL_mixer.h" />
+    <ClInclude Include="..\..\..\source\sdlmix\wavestream.h" />
     <ClInclude Include="..\..\..\source\sdl\audio\directsound\SDL_directsound.h" />
     <ClInclude Include="..\..\..\source\sdl\audio\disk\SDL_diskaudio.h" />
     <ClInclude Include="..\..\..\source\sdl\audio\dummy\SDL_dummyaudio.h" />
@@ -484,7 +484,7 @@
     <ClCompile Include="..\..\..\source\sdlmix\music_ogg.c" />
     <ClCompile Include="..\..\..\source\sdlmix\music_smpeg.c" />
     <ClCompile Include="..\..\..\source\sdlmix\music_timidity.c" />
-    <ClCompile Include="..\..\..\source\sdlmix\music_wav.c" />
+    <ClCompile Include="..\..\..\source\sdlmix\wavestream.c" />
     <ClCompile Include="..\..\..\source\sdl\atomic\SDL_atomic.c" />
     <ClCompile Include="..\..\..\source\sdl\atomic\SDL_spinlock.c" />
     <ClCompile Include="..\..\..\source\sdl\audio\directsound\SDL_directsound.c" />

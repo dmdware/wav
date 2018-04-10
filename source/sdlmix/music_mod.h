@@ -19,49 +19,44 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifdef MODPLUG_MUSIC
+/* $Id: music_mod.h 4211 2008-12-08 00:27:32Z slouken $ */
 
-#ifdef MODPLUG_HEADER
-#include MODPLUG_HEADER
-#else
-#include <libmodplug/modplug.h>
-#endif
-#include "SDL_rwops.h"
-#include "SDL_audio.h"
-#include "SDL_mixer.h"
+#ifdef MOD_MUSIC
 
-typedef struct {
-    ModPlugFile *file;
-    int playing;
-} modplug_data;
+/* This file supports MOD tracker music streams */
 
-int modplug_init(SDL_AudioSpec *mixer);
+struct MODULE;
+
+/* Initialize the Ogg Vorbis player, with the given mixer settings
+   This function returns 0, or -1 if there was an error.
+ */
+extern int MOD_init(SDL_AudioSpec *mixer);
 
 /* Uninitialize the music players */
-void modplug_exit(void);
+extern void MOD_exit(void);
 
-/* Set the volume for a modplug stream */
-void modplug_setvolume(modplug_data *music, int volume);
+/* Set the volume for a MOD stream */
+extern void MOD_setvolume(struct MODULE *music, int volume);
 
-/* Load a modplug stream from an SDL_RWops object */
-modplug_data *modplug_new_RW(SDL_RWops *rw, int freerw);
+/* Load a MOD stream from an SDL_RWops object */
+extern struct MODULE *MOD_new_RW(SDL_RWops *rw, int freerw);
 
-/* Start playback of a given modplug stream */
-void modplug_play(modplug_data *music);
+/* Start playback of a given MOD stream */
+extern void MOD_play(struct MODULE *music);
 
 /* Return non-zero if a stream is currently playing */
-int modplug_playing(modplug_data *music);
+extern int MOD_playing(struct MODULE *music);
 
-/* Play some of a stream previously started with modplug_play() */
-int modplug_playAudio(modplug_data *music, Uint8 *stream, int len);
+/* Play some of a stream previously started with MOD_play() */
+extern int MOD_playAudio(struct MODULE *music, Uint8 *stream, int len);
 
-/* Stop playback of a stream previously started with modplug_play() */
-void modplug_stop(modplug_data *music);
+/* Stop playback of a stream previously started with MOD_play() */
+extern void MOD_stop(struct MODULE *music);
 
-/* Close the given modplug stream */
-void modplug_delete(modplug_data *music);
+/* Close the given MOD stream */
+extern void MOD_delete(struct MODULE *music);
 
 /* Jump (seek) to a given position (time is in seconds) */
-void modplug_jump_to_time(modplug_data *music, double time);
+extern void MOD_jump_to_time(struct MODULE *music, double time);
 
-#endif /* MODPLUG_MUSIC */
+#endif /* MOD_MUSIC */

@@ -17,17 +17,31 @@
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-
-    This is the source needed to decode an AIFF file into a waveform.
-    It's pretty straightforward once you get going. The only
-    externally-callable function is Mix_LoadAIFF_RW(), which is meant to
-    act as identically to SDL_LoadWAV_RW() as possible.
-
-    This file by Torbjörn Andersson (torbjorn.andersson@eurotime.se)
 */
 
-/* $Id$ */
+#ifdef MP3_MUSIC
+#include "smpeg.h"
 
-/* Don't call this directly; use Mix_LoadWAV_RW() for now. */
-SDL_AudioSpec *Mix_LoadAIFF_RW (SDL_RWops *src, int freesrc,
-    SDL_AudioSpec *spec, Uint8 **audio_buf, Uint32 *audio_len);
+typedef struct {
+    int loaded;
+    void *handle;
+    void (*SMPEG_actualSpec)( SMPEG *mpeg, SDL_AudioSpec *spec );
+    void (*SMPEG_delete)( SMPEG* mpeg );
+    void (*SMPEG_enableaudio)( SMPEG* mpeg, int enable );
+    void (*SMPEG_enablevideo)( SMPEG* mpeg, int enable );
+    SMPEG* (*SMPEG_new_rwops)(SDL_RWops *src, SMPEG_Info* info, int freesrc, int sdl_audio);
+    void (*SMPEG_play)( SMPEG* mpeg );
+    int (*SMPEG_playAudio)( SMPEG *mpeg, Uint8 *stream, int len );
+    void (*SMPEG_rewind)( SMPEG* mpeg );
+    void (*SMPEG_setvolume)( SMPEG* mpeg, int volume );
+    void (*SMPEG_skip)( SMPEG* mpeg, float seconds );
+    SMPEGstatus (*SMPEG_status)( SMPEG* mpeg );
+    void (*SMPEG_stop)( SMPEG* mpeg );
+} smpeg_loader;
+
+extern smpeg_loader smpeg;
+
+#endif /* MUSIC_MP3 */
+
+extern int Mix_InitMP3();
+extern void Mix_QuitMP3();

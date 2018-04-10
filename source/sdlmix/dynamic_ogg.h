@@ -19,42 +19,37 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
-/* $Id$ */
-
-#ifndef _INCLUDE_EFFECTS_INTERNAL_H_
-#define _INCLUDE_EFFECTS_INTERNAL_H_
-
-#ifndef __MIX_INTERNAL_EFFECT__
-#error You should not include this file or use these functions.
+#ifdef OGG_MUSIC
+#if defined(OGG_HEADER)
+#include OGG_HEADER
+#elif defined(OGG_USE_TREMOR)
+#include <tremor/ivorbisfile.h>
+#else
+#include <vorbis/vorbisfile.h>
 #endif
 
-#include "SDL_mixer.h"
-
-/* Set up for C function definitions, even when using C++ */
-#ifdef __cplusplus
-extern "C" {
+typedef struct {
+    int loaded;
+    void *handle;
+    int (*ov_clear)(OggVorbis_File *vf);
+    vorbis_info *(*ov_info)(OggVorbis_File *vf,int link);
+    int (*ov_open_callbacks)(void *datasource, OggVorbis_File *vf, const char *initial, long ibytes, ov_callbacks callbacks);
+    ogg_int64_t (*ov_pcm_total)(OggVorbis_File *vf,int i);
+#ifdef OGG_USE_TREMOR
+    long (*ov_read)(OggVorbis_File *vf,char *buffer,int length, int *bitstream);
+#else
+    long (*ov_read)(OggVorbis_File *vf,char *buffer,int length, int bigendianp,int word,int sgned,int *bitstream);
 #endif
-
-extern int _Mix_effects_max_speed;
-extern void *_Eff_volume_table;
-void *_Eff_build_volume_table_u8(void);
-void *_Eff_build_volume_table_s8(void);
-
-void _Mix_InitEffects(void);
-void _Mix_DeinitEffects(void);
-void _Eff_PositionDeinit(void);
-
-int _Mix_RegisterEffect_locked(int channel, Mix_EffectFunc_t f,
-                               Mix_EffectDone_t d, void *arg);
-int _Mix_UnregisterEffect_locked(int channel, Mix_EffectFunc_t f);
-int _Mix_UnregisterAllEffects_locked(int channel);
-
-
-/* Set up for C function definitions, even when using C++ */
-#ifdef __cplusplus
-}
+#ifdef OGG_USE_TREMOR
+    int (*ov_time_seek)(OggVorbis_File *vf,ogg_int64_t pos);
+#else
+    int (*ov_time_seek)(OggVorbis_File *vf,double pos);
 #endif
+} vorbis_loader;
 
+extern vorbis_loader vorbis;
 
-#endif
+#endif /* OGG_MUSIC */
 
+extern int Mix_InitOgg();
+extern void Mix_QuitOgg();

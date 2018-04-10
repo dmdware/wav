@@ -17,17 +17,32 @@
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-
-    This is the source needed to decode an AIFF file into a waveform.
-    It's pretty straightforward once you get going. The only
-    externally-callable function is Mix_LoadAIFF_RW(), which is meant to
-    act as identically to SDL_LoadWAV_RW() as possible.
-
-    This file by Torbjörn Andersson (torbjorn.andersson@eurotime.se)
 */
 
-/* $Id$ */
+#ifdef MODPLUG_MUSIC
 
-/* Don't call this directly; use Mix_LoadWAV_RW() for now. */
-SDL_AudioSpec *Mix_LoadAIFF_RW (SDL_RWops *src, int freesrc,
-    SDL_AudioSpec *spec, Uint8 **audio_buf, Uint32 *audio_len);
+#ifdef MODPLUG_HEADER
+#include MODPLUG_HEADER
+#else
+#include <libmodplug/modplug.h>
+#endif
+
+typedef struct {
+    int loaded;
+    void *handle;
+
+    ModPlugFile* (*ModPlug_Load)(const void* data, int size);
+    void (*ModPlug_Unload)(ModPlugFile* file);
+    int  (*ModPlug_Read)(ModPlugFile* file, void* buffer, int size);
+    void (*ModPlug_Seek)(ModPlugFile* file, int millisecond);
+    void (*ModPlug_GetSettings)(ModPlug_Settings* settings);
+    void (*ModPlug_SetSettings)(const ModPlug_Settings* settings);
+    void (*ModPlug_SetMasterVolume)(ModPlugFile* file,unsigned int cvol) ;
+} modplug_loader;
+
+extern modplug_loader modplug;
+
+#endif /* MODPLUG_MUSIC */
+
+extern int Mix_InitModPlug();
+extern void Mix_QuitModPlug();

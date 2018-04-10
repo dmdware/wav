@@ -18,16 +18,14 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 
-    This is the source needed to decode an AIFF file into a waveform.
-    It's pretty straightforward once you get going. The only
-    externally-callable function is Mix_LoadAIFF_RW(), which is meant to
-    act as identically to SDL_LoadWAV_RW() as possible.
-
-    This file by Torbjörn Andersson (torbjorn.andersson@eurotime.se)
+  This is the source needed to decode an Ogg Vorbis into a waveform.
+  This file by Vaclav Slavik (vaclav.slavik@matfyz.cz).
 */
 
 /* $Id$ */
 
+#ifdef OGG_MUSIC
 /* Don't call this directly; use Mix_LoadWAV_RW() for now. */
-SDL_AudioSpec *Mix_LoadAIFF_RW (SDL_RWops *src, int freesrc,
-    SDL_AudioSpec *spec, Uint8 **audio_buf, Uint32 *audio_len);
+SDL_AudioSpec *Mix_LoadOGG_RW (SDL_RWops *src, int freesrc,
+        SDL_AudioSpec *spec, Uint8 **audio_buf, Uint32 *audio_len);
+#endif

@@ -2,6 +2,8 @@
 
 #include "wav.h"
 #include "../sys/inc.h"
+#include "../sys/utils.h"
+#include "../sys/debug.h"
 
 void dowav()
 {
@@ -14,7 +16,7 @@ void tone()
 	if (SDL_Init(SDL_INIT_AUDIO) == -1) {
 		char msg[1280];
 		sprintf(msg, "SDL_Init: %s\n", SDL_GetError());
-		ErrMess("Error", msg);
+		errm("Error", msg);
 		// handle error
 		//exit(1);
 	}
@@ -23,7 +25,7 @@ void tone()
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
 		char msg[1280];
 		printf("Mix_OpenAudio: %s\n", Mix_GetError());
-		ErrMess("Error", msg);
+		errm("Error", msg);
 		// handle error
 		//exit(2);
 	}
