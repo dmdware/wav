@@ -160,6 +160,13 @@ Mix_Chunk *ownsample = 0;
 Mix_Chunk *samples = 0;
 
 //hang
+int iTone = 40;   //Tone to be interpreted
+double iSmplRate = 22050;
+double dFreq = 440.0*pow(2.0, (iTone - 69)) / 12.0;
+double dFreqRel = iSmplRate / dFreq;
+int iSampleInstrument = NULL;
+double PI2 = 2 * M_PI;
+
 
 	//if (Mix_OpenAudio(48000, AUDIO_S16, 2, 1024) == -1)
 	{
@@ -168,10 +175,18 @@ Mix_Chunk *samples = 0;
 	}
 	//vector<short> s(48000 * 2, 0);
 	short *s = (short*)malloc(sizeof(short) * 48000 * 2);
-	for (int i = 0; i<48000 * 2 / 2; i++)
+	//for (int i = 0; i<48000 * 2 / 2; i++)
+	int j;
+	s[0] = 0;
+	for (int i = 1; i<48000 * 2; i++)
 	{
-		s[i * 2] = sin(i / 10.0 + i*i / 10000.0) * 32000 * (1 / sqrt(i / 100.0));
-		s[i * 2 + 1] = sin(i / 10.0) * 32000 * (1 / sqrt(i / 100.0));
+		double Angle = i*PI2 / dFreqRel;
+		//s[i * 2] = sin(i / 10.0 + i*i / 10000.0) * 32000 * (1 / sqrt(i / 100.0));
+		//s[i * 2 + 1] = sin(i / 10.0) * 32000 * (1 / sqrt(i / 100.0));
+		//s[i] += sin((double)i*Angle);
+		//s[i] = 0;
+		//for(j=0; j<i; ++j)
+		s[i] = s[i-1] + 1000*sin((double)i*0.0001f);
 	}
 	//samples = Mix_LoadWAV("ding.wav");
 	ownsample = (Mix_Chunk*)malloc(sizeof(Mix_Chunk));
